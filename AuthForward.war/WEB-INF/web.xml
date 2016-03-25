@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+ <display-name>test</display-name>
+ <distributable/>
+
+ <welcome-file-list>
+  <welcome-file>index.html</welcome-file>
+  <welcome-file>index.jsp</welcome-file>
+ </welcome-file-list>
+
+   <security-constraint>
+     <web-resource-collection>
+       <web-resource-name>AllContent</web-resource-name>
+       <description>Restricts access to all pages</description>
+       <url-pattern>/*</url-pattern>
+       <http-method>GET</http-method>
+       <http-method>POST</http-method>
+     </web-resource-collection>
+     <auth-constraint>
+         <role-name>*</role-name>
+     </auth-constraint>
+   </security-constraint>
+
+   <login-config>
+      <auth-method>EXTERNAL</auth-method>
+      <realm-name>Secure Application</realm-name>
+   </login-config>
+
+   <security-role>
+      <role-name>*</role-name>
+   </security-role>
+
+</web-app>
