@@ -31,13 +31,29 @@
       else{
           print "PerlSetVar for SetUserHeaderName is not configured!\n";
       }
-
+      print "Looking for 'PerlSetVar SetUserHeaderPattern myHeaderPattern'\n";
+      my $myHeaderPattern = $r->dir_config('SetUserHeaderPattern');
+      if ( $myHeaderPattern ){
+        print "myHeaderPattern is: $myHeaderPattern\n";
+      }
+      else{
+          print "PerlSetVar for SetUserHeaderPattern is not configured!\n";
+      }
       my $headerUser = $r->headers_in->get($myHeaderName);
       if ( $headerUser ){
         print "User from request-Header $myHeaderName is: $headerUser\n";
       }
       else{
           print "Header $myHeaderName is not set in request!\n";
+      }
+      if ( $headerUser and my $pattern = $r->dir_config('SetUserHeaderPattern') ){
+        if ( $headerUser =~ /$pattern/ ){
+	    $headerUser = $1;
+            print "Pattern match: $headerUser\n";
+        }
+        else{
+            print "No pattern match!\n";
+        }
       }
   
       return Apache2::Const::OK;

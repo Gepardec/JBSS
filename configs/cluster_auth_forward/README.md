@@ -17,6 +17,7 @@ Konfig in Apache:
 PerlRequire /var/www/html/perl_modules/startup.pl
 <Location /AuthForward>
     PerlSetVar SetUserHeaderName X-VPN-User
+    PerlSetVar SetUserHeaderPattern at(.*)
     PerlAccessHandler ApacheAuthTrusted::SetUser
 </Location>
 
@@ -26,6 +27,7 @@ Zum Testen kannst du folgendes installieren:
 
 <Location /printUser>
     PerlSetVar SetUserHeaderName X-VPN-User
+    PerlSetVar SetUserHeaderPattern at(.*)
     PerlAccessHandler ApacheAuthTrusted::SetUser
     SetHandler perl-script
     PerlResponseHandler  ApacheAuthTrusted::PrintUser
