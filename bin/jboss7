@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) Objectbay Software & Consulting GmbH 2012
+# Copyright (C) Gepardec IT Services GmbH 2015
 #
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions
@@ -309,7 +309,7 @@ case "$action" in
         echo "$displayName not running"
     else
         echo -n "Shutting down $displayName "
-        kill -TERM `get_pid` # 2>/dev/null
+		$admin -c "shutdown" > /dev/null &
         cnt=$STOP_TIMEOUT
         while [ $cnt -gt 0 ] && is_running
         do
@@ -357,6 +357,9 @@ case "$action" in
     $0 stop
 	sleep 1
     $0 start "$@"
+  ;;
+  pid)
+	  get_pid
   ;;
     status)
     pid=`get_pid`
@@ -458,6 +461,7 @@ case "$action" in
         kill        - stop $displayName with kill -KILL
         restart     - stop and start $displayName
         status      - check wether $displayName is running
+        pid         - show process-id if server is running
         admin       - start jboss-cli.sh and connect to $displayName
         deploy f    - deploy file f with jboss-cli.
         deployments - list current deployments.
