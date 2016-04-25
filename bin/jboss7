@@ -127,15 +127,17 @@ get_pid() {
   if [ "x$OPENSHIFT_HOMEDIR" = "x" ]; then
 	if [ -f $JBOSS_PIDFILE ]; then
 		pid=`cat $JBOSS_PIDFILE`
-		if ps -p $pid >/dev/null 2>&1; then
-			echo $pid
-			return 0;
-		fi
+	else
+	  return 1
 	fi
-	return 1
   else
-	return jps | grep jboss
+	pid=$(jps | grep jboss | cut -d' ' -f1)
   fi
+  if ps -p $pid >/dev/null 2>&1; then
+	 echo $pid
+ 	 return 0;
+  fi
+  return 2;
 }
 
 ###########################
