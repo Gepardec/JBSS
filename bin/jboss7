@@ -103,7 +103,17 @@ if [ "x$JBOSS_PIDFILE" = "x" ]; then
 fi
 export JBOSS_PIDFILE
 export LAUNCH_JBOSS_IN_BACKGROUND=true
-admin="$JBOSS_HOME/bin/jboss-cli.sh --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT"
+
+admin() {
+  if [ "x$OPENSHIFT_HOMEDIR" = "x" ]; then
+    "$JBOSS_HOME/bin/jboss-cli.sh --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT" $1 $2 $3
+  else
+    thisdir=${PWD}
+    cd $JBOSS_HOME/bin/
+    jboss-cli.sh --connect --controller="${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT}" $1 $2 $3
+    cd $thisdir
+  fi
+}
 moduleDir="$JBOSS_HOME/modules"
  
 
@@ -114,14 +124,20 @@ deployment="$2"
 # getting pid from pid.lock
 ###########################
 get_pid() {
+  if [ "x$OPENSHIFT_HOMEDIR" = "x" ]; then
 	if [ -f $JBOSS_PIDFILE ]; then
 		pid=`cat $JBOSS_PIDFILE`
-		if ps -p $pid >/dev/null 2>&1; then
-			echo $pid
-			return 0;
-		fi
+	else
+	  return 1
 	fi
-	return 1
+  else
+	pid=$(jps | grep jboss | cut -d' ' -f1)
+  fi
+  if ps -p $pid >/dev/null 2>&1; then
+	 echo $pid
+ 	 return 0;
+  fi
+  return 2;
 }
 
 ###########################
@@ -173,8 +189,8 @@ configure() {
 	ext=`echo $file | sed  's/.*\.//'`
 	case "$ext" in
 	  conf|cli)
-		echo $admin --file=$file
-		$admin --file=$file || {
+		echo admin --file=$file
+		admin --file=$file || {
 			echo "[ERROR]: failed executing $admin --file=$file" ; exit 1
 		}
   	  ;;
@@ -186,13 +202,13 @@ configure() {
   	  ;;
   	  module)
 		echo unzip -d $moduleDir $file
-		unzip -d $moduleDir $file || {
+		unzip -o -d $moduleDir $file || {
             echo "[ERROR]: failed executing unzip -d $moduleDir $file" ; exit 1
         }
   	  ;;
   	  zip)
 		echo unzip -d $JBOSS_HOME $file
-		unzip -d $JBOSS_HOME $file || {
+		unzip -o -d $JBOSS_HOME $file || {
             echo "[ERROR]: failed executing unzip -d $JBOSS_HOME $file" ; exit 1
         }
   	  ;;
@@ -231,10 +247,10 @@ is_running() {
 ###########################
 check_started() {
 	if [ ! X$DOMAIN_MODE = X ]; then
-		local_host=$($admin -c ":read-attribute(name=local-host-name)"  2>/dev/null | grep result | cut -d'"' -f4 2>/dev/null)
-		state=$($admin -c "/host=$local_host:read-attribute(name=host-state)"  2>/dev/null | grep result | cut -d'"' -f4 2>/dev/null)
+		local_host=$(admin -c ":read-attribute(name=local-host-name)"  2>/dev/null | grep result | cut -d'"' -f4 2>/dev/null)
+		state=$(admin -c "/host=$local_host:read-attribute(name=host-state)"  2>/dev/null | grep result | cut -d'"' -f4 2>/dev/null)
 	else
-		state=$($admin -c ":read-attribute(name=server-state)"  2>/dev/null | grep result | cut -d'"' -f4 2>/dev/null)
+		state=$(admin -c ":read-attribute(name=server-state)" 2>/dev/null | grep result | cut -d'"' -f4 2>/dev/null)
 	fi
 	test  X$state = Xrunning 
 }
@@ -243,7 +259,7 @@ check_started() {
 # check whether admin application is available
 ###########################
 check_admin_app() {
-    $admin -c pwd > /dev/null 2>&1
+    admin '-c pwd' >/dev/null 2>&1
 }
 
 ###########################
@@ -397,24 +413,20 @@ case "$action" in
   ;;
   deploy)
 	echo $admin \"deploy --force $deployment\"
-	$admin "deploy --force $deployment"
+	admin "deploy --force $deployment"
   ;;
   undeploy)
 	name=`basename $deployment`
 	echo $admin -c "undeploy $name"
-	$admin -c "undeploy $name"
+	admin -c "undeploy $name"
   ;;
   admin)
 	echo $admin
-	$admin
+	admin
   ;;
   deployments)
 	echo $admin -c "ls deployment"
-	$admin -c "ls deployment"
-  ;;
-  admin)
-	echo $admin
-	$admin
+	admin -c "ls deployment"
   ;;
   tear-down)
     if is_running; then

@@ -1,8 +1,25 @@
 #!/bin/bash
 
-# One-Time setup for a new JBoss instance
+###########################
+# instead of readlink -f
+###########################
+full_file_name() {
+  mfile=$1
+  if readlink --help >/dev/null 2>&1; then
+    readlink -f $mfile
+    return
+  fi
+  m_dir=`pwd`
+  m_fdir=`dirname $mfile`
+  m_file=`basename $mfile`
+  cd $m_fdir
+  r_file=`pwd`"/$m_file"
+  cd $m_dir
+  echo $r_file
+}
 
-MY_PATH=$(readlink -f $0)
+# One-Time setup for a new JBoss instance
+MY_PATH=`full_file_name $0`
 BIN_DIR=`dirname $MY_PATH`
 BASE_DIR=$BIN_DIR/..
 CONFIGS_DIR=$BASE_DIR/configs
