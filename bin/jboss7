@@ -35,7 +35,17 @@ if [ ! X$JBOSS_RELEASE_NAME = X ]; then
  	major=`  echo $JBOSS_RELEASE_NAME | perl -ne 'print /.*?-(\d+)/'`
 	case "$product" in
 	  *eap)
-		let JBOSS_MAJOR_CODE=$major+1
+		case "$major" in
+	  	  6)
+			let JBOSS_MAJOR_CODE=7
+		  ;;
+	  	  7)
+			let JBOSS_MAJOR_CODE=10
+		  ;;
+	  	  *)
+			let JBOSS_MAJOR_CODE=$major+3
+		  ;;
+		esac
   	  ;;
 	  *wildfly|*as)
 		JBOSS_MAJOR_CODE=$major
