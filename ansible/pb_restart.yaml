@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost
+  vars:
+  tasks:
+    - name: show jboss status
+      wildfly_configure:
+        jboss_home: /home/esiegl/jboss/eap7
+        jboss_version: jboss-eap-7.0.0
+        restart: true

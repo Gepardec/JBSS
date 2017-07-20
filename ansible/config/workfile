@@ -1,0 +1,304 @@
+=========================================================================
+
+  JBoss Bootstrap Environment
+
+  JBOSS_HOME: /home/esiegl/jboss/eap7
+
+  JAVA: /usr/java/jdk1.8.0_71/bin/java
+
+  JAVA_OPTS:  -server -verbose:gc -Xloggc:"/home/esiegl/jboss/eap7/standalone/log/gc.log" -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=3M -XX:-TraceClassUnloading -Xms1303m -Xmx1303m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true
+
+  JBOSS_PIDFILE: /home/esiegl/jboss/eap7/standalone/pid.lock
+
+  LAUNCH_JBOSS_IN_BACKGROUND: true
+
+=========================================================================
+
+xx 59750
+[0m22:40:07,257 INFO  [org.jboss.modules] (main) JBoss Modules version 1.5.1.Final-redhat-1
+[0m[0m22:40:07,420 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.6.Final-redhat-1
+[0m[0m22:40:07,487 INFO  [org.jboss.as] (MSC service thread 1-7) WFLYSRV0049: JBoss EAP 7.0.0.GA (WildFly Core 2.1.2.Final-redhat-1) starting
+[0m[0m22:40:08,908 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+[0m[0m22:40:08,924 INFO  [org.xnio] (MSC service thread 1-8) XNIO version 3.3.6.Final-redhat-1
+[0m[0m22:40:08,933 INFO  [org.xnio.nio] (MSC service thread 1-8) XNIO NIO Implementation Version 3.3.6.Final-redhat-1
+[0m[0m22:40:09,002 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 46) WFLYNAM0001: Activating Naming Subsystem
+[0m[0m22:40:09,004 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 37) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+[0m[0m22:40:09,022 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 38) WFLYCLINF0001: Activating Infinispan subsystem.
+[0m[0m22:40:09,041 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 53) WFLYSEC0002: Activating Security Subsystem
+[0m[33m22:40:09,042 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 54) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+[0m[0m22:40:09,059 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 44) WFLYJSF0007: Activated the following JSF Implementations: [main]
+[0m[0m22:40:09,082 INFO  [org.jboss.as.security] (MSC service thread 1-3) WFLYSEC0001: Current PicketBox version=4.9.6.Final-redhat-1
+[0m[0m22:40:09,091 INFO  [org.jboss.as.connector] (MSC service thread 1-7) WFLYJCA0009: Starting JCA Subsystem (WildFly/IronJacamar 1.3.3.Final-redhat-1)
+[0m[0m22:40:09,108 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) WFLYUT0003: Undertow 1.3.21.Final-redhat-1 starting
+[0m[0m22:40:09,111 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0003: Undertow 1.3.21.Final-redhat-1 starting
+[0m[0m22:40:09,113 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+[0m[0m22:40:09,130 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0018: Started Driver service with driver-name = h2
+[0m[0m22:40:09,142 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 56) WFLYWS0002: Activating WebServices Extension
+[0m[0m22:40:09,148 INFO  [org.jboss.as.naming] (MSC service thread 1-6) WFLYNAM0003: Starting Naming Service
+[0m[0m22:40:09,149 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-4) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+[0m[0m22:40:09,168 INFO  [org.jboss.remoting] (MSC service thread 1-8) JBoss Remoting version 4.0.18.Final-redhat-1
+[0m[0m22:40:09,307 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 55) WFLYUT0014: Creating file handler for path '/home/esiegl/jboss/eap7/welcome-content' with options [directory-listing: 'false', follow-symlink: 'false', case-sensitive: 'true', safe-symlink-paths: '[]']
+[0m[0m22:40:09,316 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0012: Started server default-server.
+[0m[0m22:40:09,323 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0018: Host default-host starting
+[0m[0m22:40:09,388 INFO  [com.arjuna.ats.jbossatx] (MSC service thread 1-2) ARJUNA032010: JBossTS Recovery Service (tag: 0bac6) - JBoss Inc.
+[0m[0m22:40:09,467 INFO  [org.jboss.as.ejb3] (MSC service thread 1-1) WFLYEJB0482: Strict pool mdb-strict-max-pool is using a max instance size of 16 (per class), which is derived from the number of CPUs on this host.
+[0m[0m22:40:09,467 INFO  [org.jboss.as.ejb3] (MSC service thread 1-6) WFLYEJB0481: Strict pool slsb-strict-max-pool is using a max instance size of 64 (per class), which is derived from thread worker pool sizing.
+[0m[0m22:40:09,488 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0006: Undertow HTTP listener default listening on 0.0.0.0:8080
+[0m[0m22:40:09,578 INFO  [com.arjuna.ats.jbossatx] (MSC service thread 1-2) ARJUNA032013: Starting transaction recovery manager
+[0m[0m22:40:09,603 INFO  [com.arjuna.ats.jbossatx] (MSC service thread 1-2) ARJUNA032017: JBossTS Transaction Service (JTA version - tag: 0bac6) - JBoss Inc.
+[0m[0m22:40:09,732 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-4) WFLYJCA0001: Bound data source [java:jboss/datasources/ticket-monsterDS]
+[0m[0m22:40:09,732 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+[0m[0m22:40:09,856 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) WFLYDS0013: Started FileSystemDeploymentService for directory /home/esiegl/jboss/eap7/standalone/deployments
+[0m[0m22:40:09,858 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0027: Starting deployment of "ticket-monster.war" (runtime-name: "ticket-monster.war")
+[0m[0m22:40:09,859 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0027: Starting deployment of "jaxrs-ws-1.0.0-SNAPSHOT.war" (runtime-name: "jaxrs-ws-1.0.0-SNAPSHOT.war")
+[0m[0m22:40:10,077 INFO  [org.infinispan.factories.GlobalComponentRegistry] (MSC service thread 1-4) ISPN000128: Infinispan version: Infinispan 'Mahou' 8.1.2.Final-redhat-1
+[0m[0m22:40:10,188 INFO  [org.jboss.ws.common.management] (MSC service thread 1-3) JBWS022052: Starting JBossWS 5.1.3.SP1-redhat-1 (Apache CXF 3.1.4.redhat-1) 
+[0m[0m22:40:10,512 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) WFLYJPA0002: Read persistence.xml for primary
+[0m[33m22:40:10,706 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-6) WFLYSRV0018: Deployment "deployment.ticket-monster.war" is using a private module ("org.jboss.as.naming:main") which may be changed or removed in future versions without notice.
+[0m[33m22:40:10,706 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-6) WFLYSRV0018: Deployment "deployment.ticket-monster.war" is using a private module ("org.jboss.as.server:main") which may be changed or removed in future versions without notice.
+[0m[33m22:40:10,706 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-6) WFLYSRV0018: Deployment "deployment.ticket-monster.war" is using a private module ("org.jboss.as.naming:main") which may be changed or removed in future versions without notice.
+[0m[33m22:40:10,706 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-6) WFLYSRV0018: Deployment "deployment.ticket-monster.war" is using a private module ("org.jboss.as.server:main") which may be changed or removed in future versions without notice.
+[0m[0m22:40:10,720 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) WFLYWELD0003: Processing weld deployment jaxrs-ws-1.0.0-SNAPSHOT.war
+[0m[0m22:40:10,755 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 58) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'ticket-monster.war#primary'
+[0m[0m22:40:10,799 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 58) HHH000204: Processing PersistenceUnitInfo [
+	name: primary
+	...]
+[0m[0m22:40:10,845 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0003: Processing weld deployment ticket-monster.war
+[0m[0m22:40:10,860 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-5) HV000001: Hibernate Validator 5.2.4.Final-redhat-1
+[0m[0m22:40:10,983 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 58) HHH000412: Hibernate Core {5.0.9.Final-redhat-1}
+[0m[0m22:40:10,984 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 58) HHH000206: hibernate.properties not found
+[0m[0m22:40:10,987 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'SectionEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/SectionEndpoint!org.jboss.examples.ticketmonster.rest.SectionEndpoint
+	java:app/ticket-monster/SectionEndpoint!org.jboss.examples.ticketmonster.rest.SectionEndpoint
+	java:module/SectionEndpoint!org.jboss.examples.ticketmonster.rest.SectionEndpoint
+	java:global/ticket-monster/SectionEndpoint
+	java:app/ticket-monster/SectionEndpoint
+	java:module/SectionEndpoint
+
+[0m[0m22:40:10,987 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'EventCategoryEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/EventCategoryEndpoint!org.jboss.examples.ticketmonster.rest.EventCategoryEndpoint
+	java:app/ticket-monster/EventCategoryEndpoint!org.jboss.examples.ticketmonster.rest.EventCategoryEndpoint
+	java:module/EventCategoryEndpoint!org.jboss.examples.ticketmonster.rest.EventCategoryEndpoint
+	java:global/ticket-monster/EventCategoryEndpoint
+	java:app/ticket-monster/EventCategoryEndpoint
+	java:module/EventCategoryEndpoint
+
+[0m[0m22:40:10,987 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'ShowService' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/ShowService!org.jboss.examples.ticketmonster.rest.ShowService
+	java:app/ticket-monster/ShowService!org.jboss.examples.ticketmonster.rest.ShowService
+	java:module/ShowService!org.jboss.examples.ticketmonster.rest.ShowService
+	java:global/ticket-monster/ShowService
+	java:app/ticket-monster/ShowService
+	java:module/ShowService
+
+[0m[0m22:40:10,988 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'TicketEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/TicketEndpoint!org.jboss.examples.ticketmonster.rest.TicketEndpoint
+	java:app/ticket-monster/TicketEndpoint!org.jboss.examples.ticketmonster.rest.TicketEndpoint
+	java:module/TicketEndpoint!org.jboss.examples.ticketmonster.rest.TicketEndpoint
+	java:global/ticket-monster/TicketEndpoint
+	java:app/ticket-monster/TicketEndpoint
+	java:module/TicketEndpoint
+
+[0m[0m22:40:10,988 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'BookingService' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/BookingService!org.jboss.examples.ticketmonster.rest.BookingService
+	java:app/ticket-monster/BookingService!org.jboss.examples.ticketmonster.rest.BookingService
+	java:module/BookingService!org.jboss.examples.ticketmonster.rest.BookingService
+	java:global/ticket-monster/BookingService
+	java:app/ticket-monster/BookingService
+	java:module/BookingService
+
+[0m[0m22:40:10,988 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'BotService' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/BotService!org.jboss.examples.ticketmonster.service.BotService
+	java:app/ticket-monster/BotService!org.jboss.examples.ticketmonster.service.BotService
+	java:module/BotService!org.jboss.examples.ticketmonster.service.BotService
+	java:global/ticket-monster/BotService
+	java:app/ticket-monster/BotService
+	java:module/BotService
+
+[0m[0m22:40:10,988 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'MediaItemEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/MediaItemEndpoint!org.jboss.examples.ticketmonster.rest.MediaItemEndpoint
+	java:app/ticket-monster/MediaItemEndpoint!org.jboss.examples.ticketmonster.rest.MediaItemEndpoint
+	java:module/MediaItemEndpoint!org.jboss.examples.ticketmonster.rest.MediaItemEndpoint
+	java:global/ticket-monster/MediaItemEndpoint
+	java:app/ticket-monster/MediaItemEndpoint
+	java:module/MediaItemEndpoint
+
+[0m[0m22:40:10,988 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'VenueEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/VenueEndpoint!org.jboss.examples.ticketmonster.rest.VenueEndpoint
+	java:app/ticket-monster/VenueEndpoint!org.jboss.examples.ticketmonster.rest.VenueEndpoint
+	java:module/VenueEndpoint!org.jboss.examples.ticketmonster.rest.VenueEndpoint
+	java:global/ticket-monster/VenueEndpoint
+	java:app/ticket-monster/VenueEndpoint
+	java:module/VenueEndpoint
+
+[0m[0m22:40:10,989 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'ShowEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/ShowEndpoint!org.jboss.examples.ticketmonster.rest.ShowEndpoint
+	java:app/ticket-monster/ShowEndpoint!org.jboss.examples.ticketmonster.rest.ShowEndpoint
+	java:module/ShowEndpoint!org.jboss.examples.ticketmonster.rest.ShowEndpoint
+	java:global/ticket-monster/ShowEndpoint
+	java:app/ticket-monster/ShowEndpoint
+	java:module/ShowEndpoint
+
+[0m[0m22:40:10,990 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'PerformanceEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/PerformanceEndpoint!org.jboss.examples.ticketmonster.rest.PerformanceEndpoint
+	java:app/ticket-monster/PerformanceEndpoint!org.jboss.examples.ticketmonster.rest.PerformanceEndpoint
+	java:module/PerformanceEndpoint!org.jboss.examples.ticketmonster.rest.PerformanceEndpoint
+	java:global/ticket-monster/PerformanceEndpoint
+	java:app/ticket-monster/PerformanceEndpoint
+	java:module/PerformanceEndpoint
+
+[0m[0m22:40:10,990 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'SectionAllocationEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/SectionAllocationEndpoint!org.jboss.examples.ticketmonster.rest.SectionAllocationEndpoint
+	java:app/ticket-monster/SectionAllocationEndpoint!org.jboss.examples.ticketmonster.rest.SectionAllocationEndpoint
+	java:module/SectionAllocationEndpoint!org.jboss.examples.ticketmonster.rest.SectionAllocationEndpoint
+	java:global/ticket-monster/SectionAllocationEndpoint
+	java:app/ticket-monster/SectionAllocationEndpoint
+	java:module/SectionAllocationEndpoint
+
+[0m[0m22:40:10,990 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'MetricsService' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/MetricsService!org.jboss.examples.ticketmonster.rest.MetricsService
+	java:app/ticket-monster/MetricsService!org.jboss.examples.ticketmonster.rest.MetricsService
+	java:module/MetricsService!org.jboss.examples.ticketmonster.rest.MetricsService
+	java:global/ticket-monster/MetricsService
+	java:app/ticket-monster/MetricsService
+	java:module/MetricsService
+
+[0m[0m22:40:10,990 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'Bot' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/Bot!org.jboss.examples.ticketmonster.service.Bot
+	java:app/ticket-monster/Bot!org.jboss.examples.ticketmonster.service.Bot
+	java:module/Bot!org.jboss.examples.ticketmonster.service.Bot
+	java:global/ticket-monster/Bot
+	java:app/ticket-monster/Bot
+	java:module/Bot
+
+[0m[0m22:40:10,991 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'EventService' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/EventService!org.jboss.examples.ticketmonster.rest.EventService
+	java:app/ticket-monster/EventService!org.jboss.examples.ticketmonster.rest.EventService
+	java:module/EventService!org.jboss.examples.ticketmonster.rest.EventService
+	java:global/ticket-monster/EventService
+	java:app/ticket-monster/EventService
+	java:module/EventService
+
+[0m[0m22:40:10,991 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'TicketPriceEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/TicketPriceEndpoint!org.jboss.examples.ticketmonster.rest.TicketPriceEndpoint
+	java:app/ticket-monster/TicketPriceEndpoint!org.jboss.examples.ticketmonster.rest.TicketPriceEndpoint
+	java:module/TicketPriceEndpoint!org.jboss.examples.ticketmonster.rest.TicketPriceEndpoint
+	java:global/ticket-monster/TicketPriceEndpoint
+	java:app/ticket-monster/TicketPriceEndpoint
+	java:module/TicketPriceEndpoint
+
+[0m[0m22:40:10,991 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'EventEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/EventEndpoint!org.jboss.examples.ticketmonster.rest.EventEndpoint
+	java:app/ticket-monster/EventEndpoint!org.jboss.examples.ticketmonster.rest.EventEndpoint
+	java:module/EventEndpoint!org.jboss.examples.ticketmonster.rest.EventEndpoint
+	java:global/ticket-monster/EventEndpoint
+	java:app/ticket-monster/EventEndpoint
+	java:module/EventEndpoint
+
+[0m[0m22:40:10,991 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'VenueService' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/VenueService!org.jboss.examples.ticketmonster.rest.VenueService
+	java:app/ticket-monster/VenueService!org.jboss.examples.ticketmonster.rest.VenueService
+	java:module/VenueService!org.jboss.examples.ticketmonster.rest.VenueService
+	java:global/ticket-monster/VenueService
+	java:app/ticket-monster/VenueService
+	java:module/VenueService
+
+[0m[0m22:40:10,991 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'TicketCategoryEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/TicketCategoryEndpoint!org.jboss.examples.ticketmonster.rest.TicketCategoryEndpoint
+	java:app/ticket-monster/TicketCategoryEndpoint!org.jboss.examples.ticketmonster.rest.TicketCategoryEndpoint
+	java:module/TicketCategoryEndpoint!org.jboss.examples.ticketmonster.rest.TicketCategoryEndpoint
+	java:global/ticket-monster/TicketCategoryEndpoint
+	java:app/ticket-monster/TicketCategoryEndpoint
+	java:module/TicketCategoryEndpoint
+
+[0m[0m22:40:10,991 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-6) WFLYEJB0473: JNDI bindings for session bean named 'BookingEndpoint' in deployment unit 'deployment "ticket-monster.war"' are as follows:
+
+	java:global/ticket-monster/BookingEndpoint!org.jboss.examples.ticketmonster.rest.BookingEndpoint
+	java:app/ticket-monster/BookingEndpoint!org.jboss.examples.ticketmonster.rest.BookingEndpoint
+	java:module/BookingEndpoint!org.jboss.examples.ticketmonster.rest.BookingEndpoint
+	java:global/ticket-monster/BookingEndpoint
+	java:app/ticket-monster/BookingEndpoint
+	java:module/BookingEndpoint
+
+[0m[0m22:40:10,993 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-5) WFLYEJB0473: JNDI bindings for session bean named 'ServiceBean' in deployment unit 'deployment "jaxrs-ws-1.0.0-SNAPSHOT.war"' are as follows:
+
+	java:global/jaxrs-ws-1.0.0-SNAPSHOT/ServiceBean!at.objectbay.tests.ws.jaxrs.ServiceBean
+	java:app/jaxrs-ws-1.0.0-SNAPSHOT/ServiceBean!at.objectbay.tests.ws.jaxrs.ServiceBean
+	java:module/ServiceBean!at.objectbay.tests.ws.jaxrs.ServiceBean
+	java:global/jaxrs-ws-1.0.0-SNAPSHOT/ServiceBean
+	java:app/jaxrs-ws-1.0.0-SNAPSHOT/ServiceBean
+	java:module/ServiceBean
+
+[0m[0m22:40:10,989 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 58) HHH000021: Bytecode provider name : javassist
+[0m[0m22:40:11,100 INFO  [org.hibernate.orm.deprecation] (ServerService Thread Pool -- 58) HHH90000001: Found usage of deprecated setting for specifying Scanner [hibernate.ejb.resource_scanner]; use [hibernate.archive.scanner] instead
+[0m[0m22:40:11,140 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 58) HCANN000001: Hibernate Commons Annotations {5.0.1.Final-redhat-2}
+[0m[0m22:40:11,506 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) WFLYWELD0006: Starting Services for CDI deployment: jaxrs-ws-1.0.0-SNAPSHOT.war
+[0m[0m22:40:11,506 INFO  [org.infinispan.configuration.cache.EvictionConfigurationBuilder] (ServerService Thread Pool -- 59) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m22:40:11,509 INFO  [org.infinispan.configuration.cache.EvictionConfigurationBuilder] (ServerService Thread Pool -- 59) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m22:40:11,521 INFO  [org.infinispan.configuration.cache.EvictionConfigurationBuilder] (ServerService Thread Pool -- 59) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m22:40:11,521 INFO  [org.infinispan.configuration.cache.EvictionConfigurationBuilder] (ServerService Thread Pool -- 59) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m22:40:11,615 INFO  [org.jboss.weld.Version] (MSC service thread 1-2) WELD-000900: 2.3.3 (redhat)
+[0m[0m22:40:11,712 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) WFLYWELD0009: Starting weld service for deployment jaxrs-ws-1.0.0-SNAPSHOT.war
+[0m[0m22:40:11,908 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0006: Starting Services for CDI deployment: ticket-monster.war
+[0m[0m22:40:11,933 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0009: Starting weld service for deployment ticket-monster.war
+[0m[0m22:40:12,118 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 58) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'ticket-monster.war#primary'
+[0m[0m22:40:12,275 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 59) WFLYCLINF0002: Started client-mappings cache from ejb container
+[0m[0m22:40:12,400 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 58) HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[0m[33m22:40:12,407 WARN  [org.hibernate.dialect.H2Dialect] (ServerService Thread Pool -- 58) HHH000431: Unable to determine H2 database version, certain features may not work
+[0m[0m22:40:12,444 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 58) Envers integration enabled? : true
+[0m[0m22:40:13,467 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 58) HHH000227: Running hbm2ddl schema export
+[0m[0m22:40:13,552 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 58) HHH000476: Executing import script '/import.sql'
+[0m[0m22:40:13,649 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 58) HHH000230: Schema export complete
+[0m[0m22:40:13,874 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 60) RESTEASY002225: Deploying javax.ws.rs.core.Application: class at.objectbay.tests.ws.jaxrs.JaxRsActivator$Proxy$_$$_WeldClientProxy
+[0m[0m22:40:13,992 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 60) WFLYUT0021: Registered web context: /jaxrs-ws-1.0.0-SNAPSHOT
+[0m[0m22:40:14,573 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 63) Initializing Mojarra 2.2.12-jbossorg-2  for context '/ticket-monster'
+[0m[0m22:40:15,096 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 63) RESTEASY002225: Deploying javax.ws.rs.core.Application: class org.jboss.examples.ticketmonster.rest.JaxRsActivator$Proxy$_$$_WeldClientProxy
+[0m[0m22:40:15,152 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 63) WFLYUT0021: Registered web context: /ticket-monster
+[0m[0m22:40:15,183 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0010: Deployed "jaxrs-ws-1.0.0-SNAPSHOT.war" (runtime-name : "jaxrs-ws-1.0.0-SNAPSHOT.war")
+[0m[0m22:40:15,183 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0010: Deployed "ticket-monster.war" (runtime-name : "ticket-monster.war")
+[0m[0m22:40:15,295 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://0.0.0.0:9990/management
+[0m[0m22:40:15,295 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://0.0.0.0:9990
+[0m[0m22:40:15,295 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: JBoss EAP 7.0.0.GA (WildFly Core 2.1.2.Final-redhat-1) started in 8321ms - Started 828 of 1102 services (394 services are lazy, passive or on-demand)
+[0m[0m19:36:55,850 INFO  [org.jboss.as.server] (management-handler-thread - 12) WFLYSRV0236: Suspending server with no timeout.
+[0m[0m19:36:55,892 INFO  [org.jboss.as.server] (Thread-2) WFLYSRV0220: Server shutdown has been requested.
+[0m[0m19:36:55,970 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 74) WFLYUT0022: Unregistered web context: /ticket-monster
+[0m[0m19:36:55,970 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 73) WFLYUT0022: Unregistered web context: /jaxrs-ws-1.0.0-SNAPSHOT
+[0m[0m19:36:56,030 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0019: Host default-host stopping
+[0m[0m19:36:56,046 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) WFLYWELD0010: Stopping weld service for deployment jaxrs-ws-1.0.0-SNAPSHOT.war
+[0m[0m19:36:56,046 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) WFLYWELD0010: Stopping weld service for deployment ticket-monster.war
+[0m[0m19:36:56,076 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 80) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'ticket-monster.war#primary'
+[0m[0m19:36:56,077 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
+[0m[0m19:36:56,077 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 80) HHH000227: Running hbm2ddl schema export
+[0m[0m19:36:56,089 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 80) HHH000230: Schema export complete
+[0m[0m19:36:56,100 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 81) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'ticket-monster.war#primary'
+[0m[0m19:36:56,101 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0010: Unbound data source [java:jboss/datasources/ticket-monsterDS]
+[0m[0m19:36:56,116 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) WFLYSRV0028: Stopped deployment jaxrs-ws-1.0.0-SNAPSHOT.war (runtime-name: jaxrs-ws-1.0.0-SNAPSHOT.war) in 211ms
+[0m[0m19:36:56,117 INFO  [com.arjuna.ats.jbossatx] (MSC service thread 1-6) ARJUNA032018: Destroying TransactionManagerService
+[0m[0m19:36:56,118 INFO  [com.arjuna.ats.jbossatx] (MSC service thread 1-6) ARJUNA032014: Stopping transaction recovery manager
+[0m[0m19:36:56,120 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) WFLYJCA0019: Stopped Driver service with driver-name = h2
+[0m[0m19:36:56,121 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0008: Undertow HTTP listener default suspending
+[0m[0m19:36:56,122 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0007: Undertow HTTP listener default stopped, was bound to 0.0.0.0:8080
+[0m[0m19:36:56,127 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0004: Undertow 1.3.21.Final-redhat-1 stopping
+[0m[0m19:36:56,128 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 81) WFLYCLINF0003: Stopped client-mappings cache from ejb container
+[0m[0m19:36:56,173 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) WFLYSRV0028: Stopped deployment ticket-monster.war (runtime-name: ticket-monster.war) in 262ms
+[0m[0m19:36:56,177 INFO  [org.jboss.as] (MSC service thread 1-6) WFLYSRV0050: JBoss EAP 7.0.0.GA (WildFly Core 2.1.2.Final-redhat-1) stopped in 224ms
+[0mgrep 59750 /home/esiegl/jboss/eap7/standalone/pid.lock
+grep: /home/esiegl/jboss/eap7/standalone/pid.lock: No such file or directory

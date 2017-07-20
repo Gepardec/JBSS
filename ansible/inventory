@@ -1,0 +1,17 @@
+
+[other]
+myjboss ansible_user=esiegl
+jboss2 ansible_host=localhost ansible_user=bla
+
+
+[jbosse]
+localhost ansible_user=esiegl
+jboss1 ansible_host=localhost ansible_user=esiegl
+
+[cluster]
+cl1 ansible_connection=local JBOSS_HOME=xx
+cl2 ansible_connection=local JBOSS_HOME=yy
+
+[local]
+my  ansible_connection=local
+
