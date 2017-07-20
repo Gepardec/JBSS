@@ -25,3 +25,18 @@
         jboss_version: "{{jboss_version}}"
         jboss_port_offset: "{{port_offset}}"
         restart: true
+    - name: create tempfile
+      command: mktemp -d
+      register: temp_install
+    - debug:
+        var: temp_install.stdout
+    - name: copy configuration
+      copy:
+        src: config
+        dest: "{{temp_install.stdout}}"
+    - name: Configure JBoss
+      wildfly_configure:
+        jboss_home: "{{jboss_home}}"
+        jboss_version: "{{jboss_version}}"
+        jboss_port_offset: "{{port_offset}}"
+        dir: "{{temp_install.stdout}}/config"

@@ -50,6 +50,7 @@ def configure(data):
 
     initialise(data)
 
+    result = "UNDEFINED"
     if data['command']:
         is_error, result = do_comand( data['command'])
 
@@ -133,7 +134,7 @@ def do_comand( command):
 
 def do_cli_file( file):
     return execute(
-      subprocess.Popen(["sh", jboss_cli, "--connect", "--file=" + file], 
+      subprocess.Popen(["sh", jboss_cli, "--connect", "--controller=" + jboss_admin_connection, "--file=" + file], 
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     )
 
@@ -153,7 +154,8 @@ def do_file( file):
     filename, ext = os.path.splitext(file)
     dir = os.path.dirname(file)
     basename = os.path.basename(file)
-    os.chdir(dir)
+    if dir:
+      os.chdir(dir)
     if ext == ".cli":
       return do_cli_file(basename);
     if ext == ".sh":
@@ -170,7 +172,7 @@ def do_dir( dir):
     listing = os.listdir(dir)
     os.chdir(dir)
     for file in listing:
-      do_file(file)
+      error, result = do_file(file)
       if error:
         return error, result
     return False, "Done directory " + dir
