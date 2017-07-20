@@ -181,7 +181,10 @@ def do_start():
 
     os.environ['JBOSS_PIDFILE'] = pidfile
     os.environ['LAUNCH_JBOSS_IN_BACKGROUND'] = 'true'
-    outlog = jboss_home + "/standalone/log/out.log"
+    logdir = jboss_home + "/standalone/log"
+    if not os.path.exists(logdir):
+      os.makedirs(logdir)
+    outlog = logdir + "/out.log"
     f = open(outlog, 'w')
     subprocess.Popen(["nohup", standalone_sh, "-Djboss.socket.binding.port-offset=" + str(jboss_port_offset) ],
         stdout=f, stderr=f, env={"JBOSS_PIDFILE": pidfile, "LAUNCH_JBOSS_IN_BACKGROUND": "true", "PATH": "/usr/bin", "JAVA_HOME": "/usr/java/jdk1.8.0_71"})

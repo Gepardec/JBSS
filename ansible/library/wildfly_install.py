@@ -71,8 +71,20 @@ def check( zip, jboss_home):
 
 def unzip( zip, dest):
     zip_ref = zipfile.ZipFile(zip, 'r')
-    zip_ref.extractall(dest)
-    zip_ref.close()
+    try:
+      for info in zip_ref.infolist():
+        real_path = zip_ref.extract(info, dest)
+
+        # permission
+        unix_attributes = info.external_attr >> 16
+        target = os.path.join(dest, info.filename)
+        if unix_attributes:
+            os.chmod(target, unix_attributes)
+
+        if not real_path:
+            return True, "Extract failed: " + info.filename
+    finally:
+      zip_ref.close()
     return False, "Unzipped " + zip
 
 def remove_version_dir( dest):
