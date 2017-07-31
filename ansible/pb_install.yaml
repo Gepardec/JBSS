@@ -5,6 +5,7 @@
     jboss_home: /home/esiegl/jboss/anstest
     port_offset: 100
     jboss_version: jboss-eap-7.0.0
+    download_zip: "/home/esiegl/Downloads/{{jboss_version}}.zip"
   tasks:
     - name: Stop JBoss in case it exists
       wildfly_configure:
@@ -17,7 +18,7 @@
       file: path="{{jboss_home}}" state=absent
     - name: Unzip JBoss Package
       wildfly_install:
-        zip: "/home/esiegl/Downloads/{{jboss_version}}.zip"
+        zip: "{{download_zip}}"
         jboss_home: "{{jboss_home}}"
     - name: Start JBoss
       wildfly_configure:

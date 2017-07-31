@@ -13,5 +13,5 @@ cl1 ansible_connection=local JBOSS_HOME=xx
 cl2 ansible_connection=local JBOSS_HOME=yy
 
 [local]
-my  ansible_connection=local
+myhost  ansible_connection=local my_home="is my castle"
 

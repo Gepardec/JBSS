@@ -1,0 +1,12 @@
+---
+
+- hosts: myhost
+  vars:
+    jboss_home: /home/esiegl/jboss/anstest
+    port_offset: 100
+    jboss_version: jboss-eap-7.0.0
+    download_zip: "/home/esiegl/Downloads/{{jboss_version}}.zip"
+  tasks:
+    - template:
+        src: templ.j2
+        dest: /tmp/file.conf
