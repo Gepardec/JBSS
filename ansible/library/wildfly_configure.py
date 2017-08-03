@@ -241,7 +241,7 @@ def wait_for_stopped():
       if not is_running():
         return False, "Shutdown after " + str(timediff(starttime)) + "sec"
 
-    return True, "Not stopped after " + str(TIMEOUT) + "sec."
+    return True, "Not stopped after " + str(STOP_TIMEOUT) + "sec."
 
 def timediff( starttime):
     return int(time.time()) - starttime
