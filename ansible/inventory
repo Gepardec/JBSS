@@ -5,7 +5,7 @@ jboss2 ansible_host=localhost ansible_user=bla
 
 
 [jbosse]
-localhost ansible_user=esiegl
+localhost
 jboss1 ansible_host=localhost ansible_user=esiegl
 
 [cluster]
