@@ -189,7 +189,7 @@ def do_start():
     outlog = logdir + "/out.log"
     f = open(outlog, 'w')
     subprocess.Popen(["nohup", standalone_sh, "-Djboss.socket.binding.port-offset=" + str(jboss_port_offset) ],
-        stdout=f, stderr=f, env={"JBOSS_PIDFILE": pidfile, "LAUNCH_JBOSS_IN_BACKGROUND": "true", "PATH": "/usr/bin", "JAVA_HOME": "/usr/java/jdk1.8.0_71"})
+        stdout=f, stderr=f, env={"JBOSS_PIDFILE": pidfile, "LAUNCH_JBOSS_IN_BACKGROUND": "true", "PATH": "/usr/bin"})
     return wait_for_started()
 
 def do_stop():
