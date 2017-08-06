@@ -181,15 +181,13 @@ def do_start():
     if is_running():
       return False, "already started"
 
-    os.environ['JBOSS_PIDFILE'] = pidfile
-    os.environ['LAUNCH_JBOSS_IN_BACKGROUND'] = 'true'
     logdir = jboss_home + "/standalone/log"
     if not os.path.exists(logdir):
       os.makedirs(logdir)
     outlog = logdir + "/out.log"
     f = open(outlog, 'w')
     subprocess.Popen(["nohup", standalone_sh, "-Djboss.socket.binding.port-offset=" + str(jboss_port_offset) ],
-        stdout=f, stderr=f, env={"JBOSS_PIDFILE": pidfile, "LAUNCH_JBOSS_IN_BACKGROUND": "true", "PATH": "/usr/bin"})
+        stdout=f, stderr=f, env={"JBOSS_PIDFILE": pidfile, "LAUNCH_JBOSS_IN_BACKGROUND": "true", "PATH": "/usr/bin", "JAVA_HOME": os.environ['JAVA_HOME']})
     return wait_for_started()
 
 def do_stop():
@@ -214,6 +212,7 @@ def do_status():
     info += " jboss_admin_connection: " + jboss_admin_connection
     info += " is running: " + str(is_running())
     info += " jboss_version: " + jboss_version
+    info += " JAVA_HOME: " +  os.environ['JAVA_HOME'] 
     return False, info
 
 def is_running():

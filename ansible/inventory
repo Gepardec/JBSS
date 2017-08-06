@@ -2,6 +2,7 @@
 [other]
 myjboss ansible_user=esiegl
 jboss2 ansible_host=localhost ansible_user=bla
+training ansible_host=192.168.105.135 ansible_user=jboss ansible_password=jboss local_home=/home/jboss
 
 
 [jbosse]
