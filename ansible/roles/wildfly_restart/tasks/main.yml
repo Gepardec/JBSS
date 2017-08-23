@@ -1,0 +1,7 @@
+---
+- name: Restart JBoss
+  wildfly_configure:
+    jboss_home: "{{jboss_home}}"
+    jboss_version: "{{jboss_version}}"
+    jboss_port_offset: "{{port_offset}}"
+    restart: true

@@ -1,11 +1,4 @@
 ---
-
-- hosts: localhost
-  vars:
-    jboss_home: /home/esiegl/jboss/eap7
-  tasks:
-    - name: restart JBoss
-      wildfly_configure:
-        jboss_home: "{{jboss_home}}"
-        jboss_version: jboss-eap-7.0.0
-        restart: true
+- hosts: localhost 
+  roles:
+   - wildfly_restart

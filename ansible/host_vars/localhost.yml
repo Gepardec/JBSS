@@ -1,0 +1,6 @@
+local_home: "{{ lookup('env','HOME') }}"
+jboss_home: "{{local_home}}/jboss/anstest"
+port_offset: 100
+jboss_version: jboss-eap-7.0.0
+download_zip: "{{local_home}}/Downloads/{{jboss_version}}.zip"
+
