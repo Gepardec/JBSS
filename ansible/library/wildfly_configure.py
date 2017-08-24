@@ -150,6 +150,12 @@ def do_zip_file( file):
     zip_ref.close()
     return False, "Unzipped " + file
 
+def do_module_file( file):
+    zip_ref = zipfile.ZipFile(file, 'r')
+    zip_ref.extractall(jboss_home + "/modules")
+    zip_ref.close()
+    return False, "Unzipped " + file
+
 def do_file( file):
     filename, ext = os.path.splitext(file)
     dir = os.path.dirname(file)
@@ -162,6 +168,8 @@ def do_file( file):
       return do_sh_file(basename);
     if ext == ".zip":
       return do_zip_file(basename);
+    if ext == ".module":
+      return do_module_file(basename);
     if ext == ".restart":
       return do_restart();
     return False, "Ignore file " + file
