@@ -184,17 +184,19 @@ def do_file( file):
       return do_module_file(basename);
     if ext == ".restart":
       return do_restart();
+    logging.info( "Ignore file " + file)
     return False, "Ignore file " + file
 
 def do_dir( dir):
     logging.debug( "do_dir " + dir)
     error = False
     result = ""
-    listing = os.listdir(dir)
+    listing = sorted(os.listdir(dir))
     os.chdir(dir)
     for file in listing:
       error, result = do_file(file)
       if error:
+        logging.error( "error " + error + " result: " + result)
         return error, result
     return False, "Done directory " + dir
 
