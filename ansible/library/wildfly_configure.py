@@ -31,6 +31,7 @@ import os
 import time
 import zipfile
 import re
+import logging
 
 __author__ = 'Erhard Siegl'
 
@@ -110,6 +111,11 @@ def initialise( data):
     port = base_port(jboss_version) + jboss_port_offset
     jboss_admin_connection = "localhost:" + str(port)
 
+    logdir = jboss_home + '/standalone/log'
+    if not os.path.exists(logdir):
+      os.makedirs(logdir)
+    logging.basicConfig(filename=logdir + "/ansible.log", level=logging.DEBUG)
+
 def base_port(jboss_version):
     p = re.compile('.*?(\d+)')
     version = int(p.match( jboss_version).group(1))
@@ -127,36 +133,42 @@ def base_port(jboss_version):
       return 9990
 
 def do_comand( command):
+    logging.debug(jboss_cli + " --connect" + " --controller=" + jboss_admin_connection + " " + command)
     return execute(
       subprocess.Popen(["sh", jboss_cli, "--connect", "--controller=" + jboss_admin_connection, command],
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     )
 
 def do_cli_file( file):
+    logging.debug(jboss_cli + " --connect" + " --controller=" + jboss_admin_connection + " --file=" + file)
     return execute(
       subprocess.Popen(["sh", jboss_cli, "--connect", "--controller=" + jboss_admin_connection, "--file=" + file], 
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     )
 
 def do_sh_file( file):
+    logging.debug( "sh " + file)
     return execute(
       subprocess.Popen(["sh", file], 
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     )
 
 def do_zip_file( file):
+    logging.debug( "unzip " + file)
     zip_ref = zipfile.ZipFile(file, 'r')
     zip_ref.extractall(jboss_home)
     zip_ref.close()
     return False, "Unzipped " + file
 
 def do_module_file( file):
+    logging.debug( "module unzip " + file)
     zip_ref = zipfile.ZipFile(file, 'r')
     zip_ref.extractall(jboss_home + "/modules")
     zip_ref.close()
     return False, "Unzipped " + file
 
 def do_file( file):
+    logging.debug( "do_file " + file)
     filename, ext = os.path.splitext(file)
     dir = os.path.dirname(file)
     basename = os.path.basename(file)
@@ -175,6 +187,7 @@ def do_file( file):
     return False, "Ignore file " + file
 
 def do_dir( dir):
+    logging.debug( "do_dir " + dir)
     error = False
     result = ""
     listing = os.listdir(dir)
