@@ -1,0 +1,36 @@
+#!/bin/sh
+
+FEATURES="DEBUG"
+
+###########################
+# Remove file parts defined in FEATURES
+###########################
+handle_features() {
+
+	ENV_SUFF=""
+
+	if [ -n "$FEATURES" ]; then
+    	for feature in $FEATURES; do
+        	ENV_SUFF="$ENV_SUFF .${feature}"
+    	done
+	fi
+    dir=.
+    if [ -z "$ENV_SUFF" ]; then
+        echo "No features defined in FEATURES"
+        return
+    fi
+    echo "Active features: $ENV_SUFF"
+    for file in $dir/*; do
+        target_file=$file
+        for feature in $ENV_SUFF; do
+            target_file=`echo $target_file | sed -e "s/$feature//"`
+        done
+        if [ "$file" != "$target_file" ]; then
+            echo "Feature copy $file to $target_file"
+            cp $file $target_file || exit 1
+        fi
+    done
+}
+
+handle_features || exit 2
+

@@ -1,0 +1,1 @@
+/subsystem=logging/logger=at.gepardec.demo:add(level=DEBUG)

@@ -167,6 +167,14 @@ def do_module_file( file):
     zip_ref.close()
     return False, "Unzipped " + file
 
+def do_bootstrap():
+    bootstrap = "00_BOOTSTRAP"
+    if not os.path.isfile(bootstrap):
+      logging.info("Bootstrap file " + bootstrap + " does not exist.")
+      return False, "No " + bootstrap
+    logging.info("Handle Bootstrap file " + bootstrap)
+    return do_sh_file( bootstrap);
+
 def do_file( file):
     logging.debug( "do_file " + file)
     filename, ext = os.path.splitext(file)
@@ -191,8 +199,14 @@ def do_dir( dir):
     logging.debug( "do_dir " + dir)
     error = False
     result = ""
-    listing = sorted(os.listdir(dir))
+
     os.chdir(dir)
+    error, result = do_bootstrap()
+    if error:
+      logging.error( "error " + error + " result: " + result)
+      return error, result
+
+    listing = sorted(os.listdir("./"))
     for file in listing:
       error, result = do_file(file)
       if error:
