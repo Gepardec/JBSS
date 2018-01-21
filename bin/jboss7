@@ -478,7 +478,7 @@ case "$action" in
         stop        - stop $displayName (kill -TERM)
         kill        - stop $displayName with kill -KILL
         restart     - stop and start $displayName
-        status      - check wether $displayName is running
+        status      - check whether $displayName is running
         pid         - show process-id if server is running
         admin       - start jboss-cli.sh and connect to $displayName
         deploy f    - deploy file f with jboss-cli.
