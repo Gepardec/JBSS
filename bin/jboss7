@@ -117,7 +117,7 @@ export LAUNCH_JBOSS_IN_BACKGROUND=true
 admin() {
   if [ "x$OPENSHIFT_HOMEDIR" = "x" ]; then
     echo "$JBOSS_HOME/bin/jboss-cli.sh --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT" "$@"
-    $JBOSS_HOME/bin/jboss-cli.sh --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT "$@"
+    $JBOSS_HOME/bin/jboss-cli.sh --echo-command --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT "$@"
   else
     thisdir=${PWD}
     cd $JBOSS_HOME/bin/
