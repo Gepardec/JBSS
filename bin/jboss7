@@ -22,6 +22,7 @@ fi
 # The use of TIMEOUT is deprecated. Use JBOSS_TIMEOUT instead.
 TIMEOUT=40
 JBOSS_MAJOR_CODE=7
+ECHO_COMMAND="--echo-command"
 
 test -f $HOME/.${instanzName}rc && . $HOME/.${instanzName}rc
 
@@ -33,14 +34,17 @@ fi
 if [ ! X$JBOSS_RELEASE_NAME = X ]; then
  	product=`echo $JBOSS_RELEASE_NAME | perl -ne 'print /(.*?)-\d+/'`
  	major=`  echo $JBOSS_RELEASE_NAME | perl -ne 'print /.*?-(\d+)/'`
+ 	minor=`  echo $JBOSS_RELEASE_NAME | perl -ne 'print /.*?-\d+\.(\d+)/'`
 	case "$product" in
 	  *eap)
 		case "$major" in
 	  	  6)
 			let JBOSS_MAJOR_CODE=7
+			ECHO_COMMAND=""
 		  ;;
 	  	  7)
 			let JBOSS_MAJOR_CODE=10
+			test $minor -lt 2 && ECHO_COMMAND=""
 		  ;;
 	  	  *)
 			let JBOSS_MAJOR_CODE=$major+3
@@ -116,8 +120,8 @@ export LAUNCH_JBOSS_IN_BACKGROUND=true
 
 admin() {
   if [ "x$OPENSHIFT_HOMEDIR" = "x" ]; then
-    echo "$JBOSS_HOME/bin/jboss-cli.sh --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT" "$@"
-    $JBOSS_HOME/bin/jboss-cli.sh --echo-command --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT "$@"
+    echo "$JBOSS_HOME/bin/jboss-cli.sh $ECHO_COMMAND --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT" "$@"
+    $JBOSS_HOME/bin/jboss-cli.sh $ECHO_COMMAND --connect --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT "$@"
   else
     thisdir=${PWD}
     cd $JBOSS_HOME/bin/
