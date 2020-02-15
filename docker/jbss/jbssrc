@@ -1,0 +1,10 @@
+# Configuration for instance jbss
+JBOSS_HOME=/install/jboss
+JBOSS_RELEASE_NAME=${JBOSS_RELEASE_NAME-jboss-eap-6.4.0}
+export JBossPackage=/install/Downloads/${JBOSS_RELEASE_NAME}.zip
+
+PORT_OFFSET=0
+
+export ENV_CONFIG=../environments/example
+
+export JBOSS_FORCE_INSTALL=True

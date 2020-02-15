@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 error=0
 
 if [ -z "$JBossPackage" ]; then
@@ -32,10 +34,10 @@ fi
 
 test $error = 0 || exit $error
 
-TmpInstall=${JBOSS_HOME}_Tmp$$
+TmpInstall=${JBOSS_HOME}/_Tmp$$
 
 unzip -d $TmpInstall $JBossPackage
-mv $TmpInstall/* $JBOSS_HOME
+mv $TmpInstall/*/* $JBOSS_HOME
 rm -r $TmpInstall
 
 if [ -n "$JBossPatch" ]; then
