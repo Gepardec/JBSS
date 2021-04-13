@@ -11,7 +11,6 @@
 # Spezielle Start/Stop-Skripts sollten nur ein link auf dieses
 # Script sein. 
 # Konfiguration durch $HOME/.${instanzName}rc
-
 if [ x$JBOSS_INSTANZ_NAME = x ]; then
 	instanzName=`basename $0`
 else
@@ -36,7 +35,7 @@ if [ ! X$JBOSS_RELEASE_NAME = X ]; then
  	major=`  echo $JBOSS_RELEASE_NAME | perl -ne 'print /.*?-(\d+)/'`
  	minor=`  echo $JBOSS_RELEASE_NAME | perl -ne 'print /.*?-\d+\.(\d+)/'`
 	case "$product" in
-	  *eap)
+	  *eap|*sso)
 		case "$major" in
 	  	  6)
 			let JBOSS_MAJOR_CODE=7
