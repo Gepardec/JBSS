@@ -34,6 +34,8 @@ fi
 
 test $error = 0 || exit $error
 
+mkdir -p $JBOSS_HOME
+
 TmpInstall=${JBOSS_HOME}/_Tmp$$
 
 unzip -d $TmpInstall $JBossPackage
