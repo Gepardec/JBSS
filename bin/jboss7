@@ -128,6 +128,13 @@ admin() {
     cd $thisdir
   fi
 }
+
+admin-embedded() {
+  echo "$JBOSS_HOME/bin/jboss-cli.sh $ECHO_COMMAND --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT" "$@"
+  $JBOSS_HOME/bin/jboss-cli.sh $ECHO_COMMAND --controller=${BIND_ADDRSS-localhost}:$JBOSS_ADMIN_PORT "$@"
+}
+
+
 moduleDir="$JBOSS_HOME/modules"
  
 
@@ -203,9 +210,15 @@ configure() {
 	ext=`echo $file | sed  's/.*\.//'`
 	case "$ext" in
 	  conf|cli)
-		admin --file=$file || {
-			echo "[ERROR]: failed executing jboss-cli.sh --file=$file" ; exit 1
-		}
+        if grep -ql "^embed-server" $file; then
+          admin-embedded --file=$file || {
+		    echo "[ERROR]: failed executing jboss-cli.sh --file=$file" ; exit 1
+		  }
+        else
+		  admin --file=$file || {
+		    echo "[ERROR]: failed executing jboss-cli.sh --file=$file" ; exit 1
+		  }
+        fi
   	  ;;
   	  sh)
 		echo /bin/bash $file
