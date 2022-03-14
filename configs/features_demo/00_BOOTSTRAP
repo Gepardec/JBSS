@@ -4,7 +4,7 @@ if [ -z "$ENV_CONFIG" ]; then
 	ENV_CONFIG=$1
 fi
 
-if [ ! -d "$ENV_CONFIG" ]; then
+if [ ! -f "$ENV_CONFIG" ]; then
     echo "WARN: File $ENV_CONFIG doesn't exist! Set ENV_CONFIG or use argument" 1>&2
     echo "WARN: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     ENV_CONFIG=../environments/fm/example.env
