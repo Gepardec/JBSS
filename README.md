@@ -2,7 +2,7 @@ JBoss Setup Scripts
 ===================
 
 The jbosstools are a collection of scripts and examples how to configure
-JBoss AS and JBoss EAP. 
+Wildfly or JBoss EAP. 
 
 Prerequisites
 -------------
