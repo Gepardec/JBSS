@@ -86,10 +86,10 @@ if [ $JBOSS_MAJOR_CODE -ge 8 ]; then
 else
 	let JBOSS_ADMIN_PORT=9999+$PORT_OFFSET
 fi
-let JBOSS_HTTP_PORT=8080+$PORT_OFFSET
+let JB_HTTP_PORT=8080+$PORT_OFFSET
 
 export JBOSS_PORT_OFFSET=$PORT_OFFSET
-export JBOSS_ADMIN_PORT JBOSS_HTTP_PORT
+export JBOSS_ADMIN_PORT JB_HTTP_PORT
 
 rundir=$JBOSS_HOME/standalone
 start="$JBOSS_HOME/bin/standalone.sh -Djboss.node.name=$instanzName $OFFSET_PROP $JBOSS_OPTS"
@@ -424,7 +424,7 @@ case "$action" in
 	if [ ! -d $JBOSS_HOME ]; then
 		echo "  Directory $JBOSS_HOME does not exist!"
 	fi
-    echo "  JBOSS_HTTP_PORT=$JBOSS_HTTP_PORT"
+    echo "  JB_HTTP_PORT=$JB_HTTP_PORT"
     echo "  Stdoutfile: $out"
     echo "  Logfile: $logfile"
     echo "  Pidfile: $JBOSS_PIDFILE"
